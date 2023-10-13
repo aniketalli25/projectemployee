@@ -1,0 +1,40 @@
+
+<mat-toolbar color="" class="fixed-top shadow text-dark" style="color: aliceblue;">
+  <mat-toolbar-row>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="pe-5">Employee Payroll</span>
+
+
+      <button class="ms-5 ps-5" mat-button><a class="nav-link active" aria-current="page" routerLink="dashboard">Dashboard</a></button>
+      <button mat-button> <a class="nav-link" routerLink="employee">Employees</a></button>
+      <button mat-button> <a class="nav-link" routerLink="attendance">Attendance</a></button>
+      <button mat-button> <a class="nav-link"routerLink="salaryAdvance">Advance</a></button>
+      <button mat-button> <a class="nav-link"routerLink="salaryRecord">Salary</a></button>
+      <button mat-button> <a class="nav-link" routerLink="leavePage">Leaves</a></button>
+
+
+
+    <span class="example-spacer"></span>
+
+    <button mat-raised-button color="warn" (click)="logout()">LogOut</button>
+
+
+
+
+  </mat-toolbar-row>
+</mat-toolbar>
+
+
+<!-- Link to page
+================================================== -->
+
+
+
+
+
+
+
+<router-outlet></router-outlet>
+

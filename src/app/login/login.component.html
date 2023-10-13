@@ -1,0 +1,81 @@
+
+<div class="l-login">
+  <div class="square blue-dark left-bottom hu_hu_animation ">
+  </div>
+  <div class="square red top-right hu__hu_r_ ">
+  </div>
+  <div class="l-login__form">
+    <img  class="l-login__form-logo zoomInDown" src="https://img.freepik.com/premium-vector/salary-payment-head-pays-employee-wages_153097-4868.jpg?w=640" alt="Company Logo" />
+     <div class="material-input__group">
+
+      <i class="mdi mdi-account"></i>
+      <input  type="text" class="material-input__group__input iconic" id="userName" name="u_name"  placeholder="Username" [(ngModel)]="loginObj.username" required>
+      <small class="text-danger" id="name_validation"></small>
+      <span class="material-input__group__highlight"></span>
+      <span class="material-input__group-bar"></span>
+      <label></label>
+    </div>
+    <div class="material-input__group">
+      <i class="mdi mdi-account"></i>
+      <input type="password" class="material-input__group__input iconic" id="password" name="u_pass" placeholder="Password"  [(ngModel)]="loginObj.password" required>
+      <small class="text-danger" id="pass_validation"></small>
+      <span class="material-input__group__highlight"></span>
+      <span class="material-input__group-bar"></span>
+      <label></label>
+    </div>
+
+
+
+
+     <button class="l-login__form__button" id="u_login" (click)="Login()"> <span >Login</span>
+      <svg version="1.1" class="progress-svg circular-loader speed-normal"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="80" height="80"
+        viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve" style="display:none">
+        <path d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50">
+        </path>
+      </svg>
+    </button>
+  </div>
+  <div class="c-wind-turbine big">
+    <div class="c-wind-turbine__inner">
+      <svg version="1.1" id="Capa_1" class="c-wind-turbine__propeller big" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        x="0px" y="0px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+        <circle style="fill:transparent;" cx="25" cy="25" r="25"/>
+        <polyline style="fill:none;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,34 25,25 34,16"/>
+        <polyline style="fill:none;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,16 25,25 34,34"/>
+        <g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g>
+      </svg>
+      <svg version="1.1" id="Capa_1_poll" class="c-wind-turbine__poll big" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        x="0px" y="0px" width="100" height="225" width="554.625px" height="554.625px" viewBox="0 0 554.625 554.625"
+        style="enable-background:new 0 0 554.625 554.625;" xml:space="preserve">
+        <g>
+          <polygon points="293.772,554.625 280.222,258.188 265.486,258.188 253.925,554.625"/>
+          <circle cx="273.853" cy="212.766" r="19.823"/>
+        </g>
+        <g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g>
+      </svg>
+   </div>
+  </div>
+  <div class="c-wind-turbine">
+    <div class="c-wind-turbine__inner">
+      <svg version="1.1" id="Capa_1" class="c-wind-turbine__propeller" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        x="0px" y="0px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+        <circle style="fill:transparent;" cx="25" cy="25" r="25"/>
+        <polyline style="fill:none;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,34 25,25 34,16"/>
+        <polyline style="fill:none;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,16 25,25 34,34"/>
+        <g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g>
+      </svg>
+      <svg version="1.1" id="Capa_1_poll" class="c-wind-turbine__poll" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        x="0px" y="0px" width="100" height="225" width="554.625px" height="554.625px" viewBox="0 0 554.625 554.625"
+        style="enable-background:new 0 0 554.625 554.625;" xml:space="preserve">
+        <g>
+          <polygon points="293.772,554.625 280.222,258.188 265.486,258.188 253.925,554.625 	"/>
+          <circle cx="273.853" cy="212.766" r="19.823"/>
+        </g>
+        <g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g>
+      </svg>
+   </div>
+  </div>
+</div>
+
+<p-toast position="top-center"></p-toast>
+

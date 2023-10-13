@@ -1,0 +1,214 @@
+<br />
+<div class="container-fluid">
+  <div class="row mt-5 pt-4">
+    <div [ngClass]="isSidePanelOpen == true ? 'col-md-7' : 'col-md-12'">
+      <div class="card">
+        <div
+          class="card-header text-white"
+          style="background-color: #3f51b5; font-size: 18px"
+        >
+          <span class="pt-5">Salary Record </span>
+          <span style="float: right">
+            <button
+              mat-raised-button
+              style="width: 0px; height: 32px"
+              (click)="openSidePanel()"
+            >
+              Create
+            </button>
+          </span>
+        </div>
+
+        <div class="card-body table-secondary">
+          <table class="table table-bordered" style="width: 100%">
+            <thead>
+              <tr>
+                <th>Sr</th>
+                <th style="width: 265px">Name</th>
+                <th>Contact</th>
+                <th>Date</th>
+                <th>Present</th>
+                <th>Salary</th>
+                <th>Advance</th>
+                <th style="width: 165px">Action</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr
+                *ngFor="let salaryRecord of salaryRecordArray; let sr = index"
+              >
+                <td>{{ sr + 1 }}</td>
+                <td>{{ salaryRecord.empName }}</td>
+                <td>{{ salaryRecord.empContactNo }}</td>
+                <td>{{ salaryRecord.salaryDate | date : "dd-MMM-yyyy" }}</td>
+                <td>{{ salaryRecord.presentDays }}</td>
+                <td>{{ salaryRecord.salaryAmount }}</td>
+                <td>{{ salaryRecord.totalAdvance }}</td>
+                <td>
+                  <button
+                    style="width: 0px; height: 32px"
+                    class=""
+                    mat-raised-button
+                    color="primary"
+                    (click)="onEdit(salaryRecord)"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    style="width: 0px; height: 32px"
+                    mat-raised-button
+                    color="warn"
+                    (click)="onDelete(salaryRecord.salaryId)"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-5" *ngIf="isSidePanelOpen">
+      <div class="card">
+        <div
+          class="card-header text-white"
+          style="background-color: #3f51b5; font-size: 18px"
+        >
+          Attendance
+          <span
+            ><button
+              style="float: right; width: 0px; height: 32px"
+              mat-raised-button
+              color="warn"
+              (click)="closeSidePanel()"
+            >
+              Close
+            </button></span
+          >
+        </div>
+
+        <div class="card-body">
+          <div class="row">
+            <div class="col-6">
+              <mat-form-field>
+                <mat-label>Employee</mat-label>
+                <mat-select
+                  [(ngModel)]="salarayRecordObj.employeeId"
+                  (change)="getEmpData()"
+                >
+                  <mat-option>None</mat-option>
+                  <mat-option
+                    *ngFor="let emp of employeeArray"
+                    [value]="emp.empId"
+                    >{{ emp.empName }}</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div class="col-6">
+              <mat-form-field class="example-full-width">
+                <mat-label>Contact No</mat-label>
+                <input
+                  type="tel"
+                  maxlength="10"
+                  matInput
+                  placeholder="555-555-1234"
+                  [(ngModel)]="salarayRecordObj.empContactNo"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <mat-form-field style="width: 220px">
+                <mat-label>Salary Date</mat-label>
+                <input
+                  matInput
+                  [matDatepickerFilter]="myFilter"
+                  [matDatepicker]="picker"
+                  [(ngModel)]="salarayRecordObj.salaryDate"
+                />
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle
+                  matIconSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+
+            <div class="col-6">
+              <mat-form-field class="example-full-width">
+                <mat-label>Present Days</mat-label>
+                <input
+                  matInput
+                  type="number"
+                  [(ngModel)]="salarayRecordObj.presentDays"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <mat-form-field class="example-full-width">
+                <mat-label>Salary Amount</mat-label>
+                <input
+                  matInput
+                  type="number"
+                  [(ngModel)]="salarayRecordObj.salaryAmount"
+                />
+              </mat-form-field>
+            </div>
+            <div class="col-6">
+              <mat-form-field class="example-full-width">
+                <mat-label>Advance</mat-label>
+                <input
+                  matInput
+                  type="number"
+                  [(ngModel)]="salarayRecordObj.totalAdvance"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row text-center">
+            <div class="col-6" style="padding-left: 170px">
+              <button
+                style="background-color: rgba(76, 73, 73, 0.826); color: white"
+                mat-raised-button
+                (click)="onReset()"
+              >
+                Reset
+              </button>
+            </div>
+            <div class="col-6" style="padding-right: 170px">
+              <button
+                mat-raised-button
+                color="primary"
+                *ngIf="this.salarayRecordObj.salaryId == 0"
+                (click)="saveSalary()"
+              >
+                Save
+              </button>
+              <button
+                mat-raised-button
+                color="primary"
+                *ngIf="this.salarayRecordObj.salaryId !== 0"
+                (click)="updateSalary()"
+              >
+                Update
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-toast position="top-center"></p-toast>

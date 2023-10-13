@@ -1,0 +1,73 @@
+.dashboard-boxes-set
+{
+    position: relative;
+    display: block;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    margin-bottom: 15px;
+  cursor:pointer;
+  color:#fff;
+}
+.dashboard-boxes-set > .inner {
+    padding: 10px;
+}
+.dashboard-boxes-set h3
+{
+    font-size: 38px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    white-space: nowrap;
+    padding: 0;
+}
+.dashboard-boxes-set p {
+    font-size: 15px;
+}
+.dashboard-boxes-set>.icon {
+    position: absolute;
+    top: auto;
+    bottom: 5px;
+    right: 15px;
+    z-index: 0;
+    font-size: 90px;
+    color: rgba(0, 0, 0, 0.15);
+  transition:all ease .5s;
+}
+.boxes-set:hover .icon {
+    transform:scale(1.1);
+  transition:all ease .5s;
+  transform-origin:right;
+}
+ .box-footer
+{
+    position: relative;
+    text-align: center;
+    padding: 20px 0;
+    color: #170202;
+    color: rgba(21, 1, 1, 0.8);
+    display: block;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+}
+
+
+
+.bg-aqua {
+    background-color: #00c0ef !important;
+}
+.bg-green {
+    background-color: #00a65a !important;
+}
+.bg-blue {
+    background-color: #0073b7 !important;
+}
+.bg-yellow {
+    background-color: #f39c12 !important;
+}
+.bg-red{
+  background-color: rgb(207, 88, 88) !important ;
+}
+.bg-aquamarine{
+  background-color: rgb(70, 209, 162) !important;
+}

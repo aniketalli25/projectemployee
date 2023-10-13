@@ -1,0 +1,7 @@
+.card-bodyScroll {
+  overflow-y: scroll;
+  height: 600px;
+}
+button {
+  margin-right: 8px;
+}

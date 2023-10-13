@@ -1,0 +1,27 @@
+button {
+  margin-right: 8px;
+}
+.example-form-field {
+  width: 200px;
+}
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+.card-body {
+  overflow-y: scroll;
+  height: 600px;
+}
+#c-btn{
+  background-color: #fff;
+}

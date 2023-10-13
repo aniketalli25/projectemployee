@@ -1,0 +1,196 @@
+<br />
+<div class="container-fluid">
+  <div class="row mt-5 pt-4">
+    <div [ngClass]="isSidePanelOpen == true ? 'col-md-7' : 'col-md-12'">
+      <div class="card">
+        <div
+          class="card-header text-white"
+          style="background-color: #3f51b5; font-size: 18px"
+        >
+          <span class="pt-5">Leaves</span>
+          <span style="float: right">
+            <button
+              mat-raised-button
+              style="width: 0px; height: 32px"
+              (click)="openSidePanel()"
+            >
+              Create
+            </button>
+          </span>
+        </div>
+
+        <div class="card-body card-bodyScroll table-secondary">
+          <table class="table table-bordered" style="width: 100%">
+            <thead>
+              <tr>
+                <th>Sr</th>
+                <th style="width: 265px">Name</th>
+                <th>Contact</th>
+                <th>Date</th>
+                <th>Reason</th>
+                <th>Full Day</th>
+                <th>Half Day</th>
+                <th style="width: 165px">Action</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let leaves of leavesArray; let sr = index">
+                <td>{{ sr + 1 }}</td>
+                <td>{{ leaves.empName }}</td>
+                <td>{{ leaves.empContactNo }}</td>
+                <td>{{ leaves.leaveDate | date : "dd-MMM-yyyy" }}</td>
+                <td>{{ leaves.leaveReason }}</td>
+                <td>{{ leaves.noOfFullDayLeaves }}</td>
+                <td>{{ leaves.noOfHalfDayLeaves }}</td>
+                <td>
+                  <button
+                    style="width: 0px; height: 32px"
+                    class=""
+                    mat-raised-button
+                    color="primary"
+                    (click)="onEdit(leaves)"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    style="width: 0px; height: 32px"
+                    mat-raised-button
+                    color="warn"
+                    (click)="onDelete(leaves.leaveId)"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-5" *ngIf="isSidePanelOpen">
+      <div class="card">
+        <div
+          class="card-header text-white"
+          style="background-color: #3f51b5; font-size: 18px"
+        >
+          Leaves
+          <span
+            ><button
+              style="float: right; width: 0px; height: 32px"
+              mat-raised-button
+              color="warn"
+              (click)="closeSidePanel()"
+            >
+              Close
+            </button></span
+          >
+        </div>
+
+        <div class="card-body">
+          <div class="row">
+            <div class="col-6">
+              <mat-form-field>
+                <mat-label>Employee</mat-label>
+                <mat-select [(ngModel)]="leavesObj.employeeId">
+                  <mat-option>None</mat-option>
+                  <mat-option
+                    *ngFor="let emp of employeeArray"
+                    [value]="emp.empId"
+                    >{{ emp.empName }}</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div class="col-6">
+              <mat-form-field style="width: 220px">
+                <mat-label>Leave Date</mat-label>
+                <input
+                  matInput
+                  [matDatepickerFilter]="myFilter"
+                  [matDatepicker]="picker"
+                  [(ngModel)]="leavesObj.leaveDate"
+                />
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle
+                  matIconSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <mat-form-field class="example-full-width">
+                <mat-label>Full Day</mat-label>
+                <input
+                  matInput
+                  type="number"
+                  [(ngModel)]="leavesObj.noOfFullDayLeaves"
+                />
+              </mat-form-field>
+            </div>
+            <div class="col-6">
+              <mat-form-field class="example-full-width">
+                <mat-label>Half Day</mat-label>
+                <input
+                  matInput
+                  type="number"
+                  [(ngModel)]="leavesObj.noOfHalfDayLeaves"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <mat-form-field class="example-full-width" style="width: 475px">
+                <mat-label>Leave Reason</mat-label>
+                <textarea
+                  matInput
+                  [(ngModel)]="leavesObj.leaveReason"
+                ></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row text-center">
+            <div class="col-6" style="padding-left: 170px">
+              <button
+                style="background-color: rgba(76, 73, 73, 0.826); color: white"
+                mat-raised-button
+                (click)="onReset()"
+              >
+                Reset
+              </button>
+            </div>
+            <div class="col-6" style="padding-right: 170px">
+              <button
+                mat-raised-button
+                color="primary"
+                *ngIf="this.leavesObj.leaveId == 0"
+                (click)="saveLeaves()"
+              >
+                Save
+              </button>
+              <button
+                mat-raised-button
+                color="primary"
+                *ngIf="this.leavesObj.leaveId !== 0"
+                (click)="updateLeaves()"
+              >
+                Update
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-toast position="top-center"></p-toast>
